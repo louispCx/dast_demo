@@ -1,11 +1,11 @@
 name: CxONE Dast Scan Security Tweets
 on:
-  #pull_request:
-  #branches:
-  # - main
-  push: 
+  pull_request:
    branches:
-   - main
+    - main
+  #push: 
+  # branches:
+  # - main
     
   workflow_dispatch: #adds a 'run now' button
   
