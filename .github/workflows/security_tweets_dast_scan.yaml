@@ -1,11 +1,11 @@
 name: CxONE Dast Scan Security Tweets
 on:
   #pull_request:
-  # branches:
+  #branches:
   # - main
-  #push: 
-  # branches:
-  # - main
+  push: 
+   branches:
+   - main
     
   workflow_dispatch: #adds a 'run now' button
   
@@ -35,19 +35,19 @@ jobs:
         uses: Checkmarx/dast-github-action@v1.0.4
         env:
           # prod
-          CX_APIKEY: ${{ secrets.CX_APIKEY }}
+          #CX_APIKEY: ${{ secrets.CX_APIKEY }}
           # canary: 
-          # CX_APIKEY: ${{ secrets.CANARY_API_KEY }}
+          CX_APIKEY: ${{ secrets.CX_CANARY_APIKEY }}
         with:
             command: web
             config: './security_tweets.yaml'
             log_level: info
             #prod
-            base_url: "https://ast.checkmarx.net"
-            environment_id: "2a9f8f9a-5a62-468c-85ef-27bfbabf01bf"
+            #base_url: "https://ast.checkmarx.net"
+            #environment_id: "2a9f8f9a-5a62-468c-85ef-27bfbabf01bf"
             # canary
-            #base_url: "https://deu.ast.checkmarx.net"
-            #environment_id: "fd6ea573-a228-47e1-b5f8-573525251bc0"
+            base_url: "https://deu.ast.checkmarx.net"
+            environment_id: "62e81481-dbbc-4017-9087-1e5542e0c7d6"
             fail_on: ""
             verbose: true
             output: ${{ github.workspace }}/output_fold
