@@ -39,8 +39,8 @@ jobs:
             command: web
             config: './security_tweets.yaml'
             log_level: info
-            base_url: ${{ env.CX_BASEURL }}
-            environment_id: ${{ env.CX_ENV_ID }}
+            base_url: ${{ vars.CX_BASEURL }}
+            environment_id: ${{ vars.CX_ENV_ID }}
             fail_on: ""
             verbose: true
             output: ${{ github.workspace }}/output_fold
