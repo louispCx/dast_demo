@@ -34,20 +34,13 @@ jobs:
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@v1.0.4
         env:
-          # prod
-          #CX_APIKEY: ${{ secrets.CX_APIKEY }}
-          # canary: 
-          CX_APIKEY: ${{ secrets.CX_CANARY_APIKEY }}
+          CX_APIKEY: ${{ secrets.CX_APIKEY }}
         with:
             command: web
             config: './security_tweets.yaml'
             log_level: info
-            #prod
-            #base_url: "https://ast.checkmarx.net"
-            #environment_id: "2a9f8f9a-5a62-468c-85ef-27bfbabf01bf"
-            # canary
-            base_url: "https://deu.ast.checkmarx.net"
-            environment_id: "62e81481-dbbc-4017-9087-1e5542e0c7d6"
+            base_url: ${{ variables.CX_BASEURL }}
+            environment_id: ${{ variables.CX_ENV_ID }}
             fail_on: ""
             verbose: true
             output: ${{ github.workspace }}/output_fold
